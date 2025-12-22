@@ -63,7 +63,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     },
     { 
       id: 'criminal-alert', 
-      label: 'Criminal Alert', 
+      label: 'Crime Alert', 
       labelHi: 'आपराधिक सतर्कता',
       subMenu: [
         { id: 'sub-1', label: 'Crime Reports', labelHi: 'अपराध और सुरक्षा से जुड़ी जरूरी जानकारी' },
@@ -79,7 +79,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     },
     { 
       id: 'civic-cost-special', 
-      label: 'Civic Cost Special', 
+      label: 'Civic Cast Special', 
       labelHi: 'Civic कॉस्ट स्पेशल',
       subMenu: [
         { id: 'sub-1', label: 'Exclusive Stories', labelHi: 'जो खबरें आपको कहीं और नहीं मिलेंगी' },
@@ -152,15 +152,11 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-0 md:px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <button
-            onClick={() => handleNavigate('home')}
-            className="flex items-center hover:opacity-80 transition-opacity"
-          >
-            <img src={logo} alt="CivicCast Logo" className="h-20 md:h-40 w-auto" />
-          </button>
+         
+            <img   onClick={() => handleNavigate('home')} src={logo} alt="CivicCast Logo" className="h-30 md:h-40 w-auto header__logo" />
+         
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2 overflow-x-auto max-w-[calc(100vw-200px)]">
