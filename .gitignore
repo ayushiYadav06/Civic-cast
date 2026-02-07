@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -22,3 +23,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+# Dependencies
+node_modules/
+my-react-app/node_modules/
+cms-backend/vendor
+cms-backend/vendor/
+
+# Environment
+.env
+.env.*
+cms-backend/.env
+
+# Build / output
+dist/
+my-react-app/dist/
+
+# Logs and cache
+*.log
+.DS_Store
+>>>>>>> 4890e0c (Add full project: my-react-app and cms-backend)

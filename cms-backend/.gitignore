@@ -1,0 +1,29 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Composer
+/vendor/
+
+# Uploaded files (keep .htaccess for uploads folder)
+/uploads/*
+!/uploads/.htaccess
+
+# Logs and temp
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# PHP
+*.cache
