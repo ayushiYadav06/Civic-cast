@@ -64,7 +64,7 @@ export function SecondHeader() {
   return (
     <div ref={headerRef} className="w-full bg-blue-900 border-b-4 border-yellow-400">
       {/* ===== DESKTOP & TABLET ===== */}
-      <div className="hidden md:flex flex-wrap justify-center gap-x-12 gap-y-5 px-6 lg:px-16 py-5" style={{margin:"16px"}}>
+      <div className="second-header-nav hidden md:flex flex-wrap justify-center lg:justify-evenly gap-x-1 md:gap-x-3 gap-y-2 px-2 md:px-4 lg:px-8 py-3 lg:py-5">
         {categories.map((category) => {
           const Icon = getCategoryIcon(category.slug, category.id);
           const isActive = activeId === category.id;
@@ -72,22 +72,26 @@ export function SecondHeader() {
           const subtitle = category.description || (subCats.length ? subCats.map((s) => s.name).join(" • ") : "");
 
           return (
-            <div key={category.id} className="relative flex-shrink-0">
+            <div
+              key={category.id}
+              className="relative flex-shrink-0"
+              onMouseEnter={() => setActiveId(category.id)}
+              onMouseLeave={() => setActiveId(null)}
+            >
               <button
-                onClick={() => setActiveId(isActive ? null : category.id)}
-                className="flex items-center gap-1 text-black font-bold px-4 py-2.5 hover:text-yellow-300 transition-colors whitespace-nowrap"
+                className="second-header-btn flex items-center gap-1 text-black font-bold px-2 py-1.5 md:px-3 md:py-2 lg:px-4 lg:py-2.5 hover:text-yellow-300 transition-colors whitespace-nowrap"
               >
-                <Icon className="w-5 h-5 text-yellow-300 flex-shrink-0" />
-                <span className="text-sm lg:text-base">{category.name}</span>
+                <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-300 flex-shrink-0" />
+                <span className="text-xs md:text-xs lg:text-base">{category.name}</span>
               </button>
               {isActive && <div className="h-0.5 bg-yellow-400 mt-1" />}
               {isActive && (subtitle || subCats.length > 0) && (
-                <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-72 bg-white text-blue-900 text-xs rounded-lg shadow-xl p-3 z-50">
+                <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 lg:w-72 bg-white text-blue-900 text-xs rounded-lg shadow-xl p-3 z-50">
                   {subCats.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {subCats.map((sc) => (
                         <span key={sc.id} className="bg-blue-50 px-2 py-0.5 rounded text-blue-900">
-                          {sc.name} 
+                          {sc.name}
                         </span>
                       ))}
                     </div>

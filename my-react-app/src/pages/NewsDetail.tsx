@@ -4,7 +4,6 @@ import { API_ENDPOINTS, API_BASE_URL } from '../config/api';
 import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 import { ArrowLeft, Calendar, Eye, User } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
 
 interface NewsDetail {
   id: number;
@@ -38,11 +37,11 @@ export default function NewsDetail() {
 
   const loadNews = async () => {
     if (!id) return;
-    
+
     try {
       const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.NEWS_BY_ID(parseInt(id))}`);
       const result = await response.json();
-      
+
       if (result.success && result.data) {
         setNews(result.data);
       } else {
@@ -59,7 +58,7 @@ export default function NewsDetail() {
 
   const incrementViews = async () => {
     if (!id) return;
-    
+
     try {
       await fetch(`${API_BASE_URL}${API_ENDPOINTS.INCREMENT_VIEWS(parseInt(id))}`, {
         method: 'POST',
@@ -122,7 +121,7 @@ export default function NewsDetail() {
             {news.sub_title && (
               <p className="text-xl text-gray-600 mb-4">{news.sub_title}</p>
             )}
-            
+
             {/* Meta Information */}
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 pt-4 border-t border-gray-200">
               {news.category_name && (
@@ -135,12 +134,22 @@ export default function NewsDetail() {
               {news.operator_name && (
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
-                  <span>{news.operator_name}</span>
+                  <span>Admin</span>
                 </div>
               )}
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                <span>{formatDistanceToNow(new Date(news.created_at), { addSuffix: true })}</span>
+                <span>
+                  {new Date(news.created_at).toLocaleString('en-IN', {
+                    timeZone: 'Asia/Kolkata',
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true,
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Eye className="h-4 w-4" />
